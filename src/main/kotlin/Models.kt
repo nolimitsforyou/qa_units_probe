@@ -2,8 +2,8 @@ class User(
     firstName: String,
     lastName: String,
 ) {
-    val name = firstName
-    val family = lastName
+    private val name = firstName
+    private val family = lastName
     var profession: String? = null
 
     fun sayYourName(){
