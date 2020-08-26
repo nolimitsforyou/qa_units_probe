@@ -1,0 +1,17 @@
+.idea
+.gradle
+
+out
+allure-results
+build
+detekt
+local.properties
+local.tmp.properties
+*.remote.properties
+*.local.properties
+*.log
+*.iml
+*.png
+
+cases_to_tests.json
+testrail_statuses.json
