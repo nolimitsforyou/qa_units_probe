@@ -23,10 +23,10 @@ class User(
 
 class Car {
 
-    lateinit var model: String
-    var price by Delegates.notNull<Int>()
-    lateinit var color: String
     var speed by Delegates.notNull<Int>()
+    var price by Delegates.notNull<Int>()
+    lateinit var model: String
+    lateinit var color: String
 
     fun getDefaultCar(): Car {
         return Car().apply {
