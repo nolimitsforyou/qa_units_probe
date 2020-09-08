@@ -1,18 +1,26 @@
+import io.mockk.every
+import io.mockk.mockk
 import junit.framework.Assert.assertTrue
 import org.junit.jupiter.api.Test
 
 class Test_1 {
 
+    private val modelName = "Lada"
+
     @Test
-    fun fst() {
+    fun firstTest() {
 
-        val car = Car().getDefaultCar()
+        val car = mockk<Car>()
+        every { car.model } returns modelName
 
-        assertTrue(car.color != "зелёный")
+        val user = User(
+            firstName = "Петя",
+            lastName = "Олушкин",
+            carDriver = true,
+            carOwner = true,
+            car = car
+        )
 
-        val car_2 = Car()
-        val color = car_2.color
-
-        car_2.sayCarsProperties(car_2)
+        assertTrue(car.model == modelName)
     }
 }

@@ -1,46 +1,41 @@
-import kotlin.properties.Delegates
 
 class User(
-    firstName: String,
-    lastName: String,
+    val firstName: String,
+    val lastName: String,
+    val carDriver: Boolean,
+    val carOwner: Boolean,
+    val car: Car
 ) {
-    private val name = firstName
-    private val family = lastName
-    var profession: String? = null
 
     fun sayYourName() {
-        println("$name $family")
+        println("$firstName $lastName")
     }
 
-    fun sayYourProfession() {
-        if (profession != null) {
-            println(profession)
-        } else {
-            println("I have no profession")
-        }
+    fun getInformationAboutYourCar() {
+        car.sayCarsProperties()
     }
 }
 
-class Car {
+class Car(
+    val color: String,
+    val model: String,
+    val price: Int,
+    val speed: Int,
+    var owner: User?
+) {
 
-    var speed by Delegates.notNull<Int>()
-    var price by Delegates.notNull<Int>()
-    lateinit var model: String
-    lateinit var color: String
-
-    fun getDefaultCar(): Car {
-        return Car().apply {
-            model = "Lada"
-            price = 300
-            color = "красный"
-            speed = 90
-        }
-    }
-
-    fun sayCarsProperties(car: Car) {
-        println("Модель = ${car.model}")
-        println("Цена = ${car.price} рублей")
-        println("Цвет = ${car.color}")
-        println("Скорость = ${car.speed} км/ч")
+    fun sayCarsProperties() {
+        println("Модель '$model'")
+        println("Цена '$price' рублей")
+        println("Цвет = '$color'")
+        println("Скорость '$speed' км/ч")
     }
 }
+
+fun getDefaultCar() = Car(
+    color = "красный",
+    model = "Lada",
+    price = 300,
+    speed = 60,
+    owner = null
+)
